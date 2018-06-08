@@ -1,12 +1,14 @@
-var chat = (function () {
-    function chat() {
+var controllerChat = (function () {
+    function controllerChat() {
     }
-    chat.prototype.writeMessage = function (message) {
-        return message;
+    controllerChat.prototype.writeMessage = function (message, author) {
+        var loggable = new modelChat();
+        var foo = loggable.author;
+        return loggable;
     };
-    chat.prototype.getMessage = function () {
+    controllerChat.prototype.getMessage = function () {
         return 'boo';
     };
-    return chat;
+    return controllerChat;
 }());
 //# sourceMappingURL=chat.js.map

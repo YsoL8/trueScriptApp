@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>The App Front</title>
+    <link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<div id="wrapper"></div>
+<div id="wrapper">
+
+    <div id="login">
+        User:
+        <input id="user">
+    </div>
+
+    <div id="chatOutput"></div>
+    <div id="chatInput">
+        <p><span id="loggedUser"></span>Reply here</p>
+        <textarea id="textInput"></textarea>
+
+    </div>
+
+
+</div>
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
+
+<script src="javascript/models/account.js"></script>
+<script src="javascript/models/chat.js"></script>
+<script src="javascript/controllers/chat.js"></script>
+<script src="javascript/routes/chat.js"></script>
 <script src="javascript/app.js"></script>
 </body>
 </html>

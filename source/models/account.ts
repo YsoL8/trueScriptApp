@@ -1,0 +1,3 @@
+class modelAccount {
+    user : string
+}

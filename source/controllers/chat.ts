@@ -1,7 +1,9 @@
-class chat {
-    writeMessage(message: string) {
+class controllerChat {
+    writeMessage(message: string, author: modelAccount):modelChat {
+        let loggable = new modelChat();
+        let foo = loggable.author;
 
-        return message;
+        return loggable;
     }
     getMessage() {
         return 'boo';
