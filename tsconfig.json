@@ -1,0 +1,17 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "public/javascript",
+    "baseUrl": ".",
+    "rootDir": "./source"
+  }
+//  "include": [
+//    "source/**/*"
+//  ]
+}
