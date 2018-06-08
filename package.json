@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/YsoL8/typeScriptApp/issues"
   },
-  "homepage": "https://github.com/YsoL8/typeScriptApp#readme"
+  "homepage": "https://github.com/YsoL8/typeScriptApp#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.3.2"
+  },
+  "dependencies": {
+    "bower": "^1.8.4"
+  }
 }
