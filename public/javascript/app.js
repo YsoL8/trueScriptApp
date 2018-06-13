@@ -1,5 +1,11 @@
 $(function () {
-    var router = new routeChat();
+    try {
+        var router = new routeChat();
+    }
+    catch (e) {
+        console.log('stopped at router initialisation');
+        return false;
+    }
     $('#user').on('blur', function () {
         router.logUser(sanitiseToString('user'));
     });
@@ -8,11 +14,13 @@ $(function () {
             router.logUser(sanitiseToString('user'));
     });
     $('#textInput').on('blur', function () {
-        router.sendMessage(sanitiseToString('textInput'));
+        if (router.sendMessage(sanitiseToString('textInput')) == false)
+            console.log('Could not send message');
     });
     $('#textInput').on('keydown', function (e) {
         if (e.which == 13)
-            router.sendMessage(sanitiseToString('textInput'));
+            if (router.sendMessage(sanitiseToString('textInput')) == false)
+                console.log('Could not send message');
     });
     function sanitiseToString(inputId) {
         var input = $('#' + inputId).val();

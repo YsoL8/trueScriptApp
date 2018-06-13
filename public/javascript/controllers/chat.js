@@ -1,9 +1,22 @@
 var controllerChat = (function () {
     function controllerChat() {
+        this.storage = null;
+        try {
+            this.storage = new storageEmulationController();
+        }
+        catch (e) {
+            throw new Error('Cannot write chatlog');
+        }
     }
     controllerChat.prototype.writeMessage = function (message, author) {
+        if (!author || !this.storage) {
+            return false;
+        }
         var loggable = new modelChat();
-        var foo = loggable.author;
+        loggable.author = author.user;
+        loggable.creation = new Date();
+        loggable.content = message;
+        this.storage.insert(loggable);
         return loggable;
     };
     controllerChat.prototype.getMessage = function () {

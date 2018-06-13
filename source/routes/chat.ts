@@ -1,6 +1,17 @@
 class routeChat {
-    chatControl : controllerChat = new controllerChat();
+    chatControl : controllerChat | null = null;
     sessionUser : modelAccount | null = null;
+
+    constructor() {
+
+        try {
+            this.chatControl = new controllerChat();
+        }
+        catch (e) {
+            throw new Error('Failed to initialise controllers');
+        }
+
+    }
 
     logUser(user : string):boolean {
         this.sessionUser = new modelAccount();
@@ -12,9 +23,15 @@ class routeChat {
     getMessages() {
 
     }
-    sendMessage(message: string):boolean {
-        console.log('sending');
 
-        return true;
+    sendMessage(message: string):boolean {
+
+        if (this.chatControl && this.sessionUser) {
+            this.chatControl.writeMessage(message, this.sessionUser);
+
+            return true;
+        }
+
+        return false;
     }
 }
