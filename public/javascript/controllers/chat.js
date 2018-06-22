@@ -2,7 +2,7 @@ var controllerChat = (function () {
     function controllerChat() {
         this.storage = null;
         try {
-            this.storage = new storageEmulationController();
+            this.storage = new storageEmulationController(true);
         }
         catch (e) {
             throw new Error('Cannot write chatlog');

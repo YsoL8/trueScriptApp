@@ -20,8 +20,10 @@ class routeChat {
         return true;
     }
 
-    getMessages() {
+    getMessages():boolean {
+        console.log('clock is running');
 
+        return true;
     }
 
     sendMessage(message: string):boolean {

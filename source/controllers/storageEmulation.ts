@@ -4,9 +4,11 @@
 class storageEmulationController {
 
     db : IDBDatabase | null = null;
+    psudoObserver : number | null = null;
+    diff : object[] = [];
 
-    constructor () {
-        let self : storageEmulationController  = this;
+    constructor (enablePsudoChangeObserver = false) {
+        let self : storageEmulationController = this;
 
         if (!window.indexedDB) {
             throw new Error('Local storage is not supported by the browser.');
@@ -27,6 +29,10 @@ class storageEmulationController {
         };
         request.onsuccess = (event : Event & { target: { result: IDBDatabase }}) => { //db object is ready and valid
             self.db = event.target.result;
+
+            if (enablePsudoChangeObserver) {
+                this.psudoObserver = window.setInterval(() => {this.observeChanges(); }, 2000);
+            }
         };
     }
 
@@ -53,6 +59,21 @@ class storageEmulationController {
         }
         table.add(data);
         return true;
+    }
+
+    //callback to an application layer handler with notification of db changes
+    observeChanges() {
+        if (!this.db) { //possible race condition?
+            return false;
+        }
+        let tablePromises : object[] = [];
+
+        console.log(this.db.objectStoreNames);
+
+        for (let x = 0; this.db.objectStoreNames.length > x; x++) {
+            tablePromises.push();
+        }
+
     }
 
 }
